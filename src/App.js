@@ -1,30 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router';
-import  Productos  from './componentes/Productos';
-import  Home  from './componentes/Home';
-import  About  from './componentes/About';
-import  Layout  from './Layout';
+import Home from './componentes/Home';
+import About from './componentes/About';
+import Layout from './Layout';
+import LayoutAbout from './componentes/LayoutAbout';
+import LayoutCasosExito from './componentes/LayoutCasosExito';
 import CasosExito from './componentes/CasosExito';
-import LayoutInicio from './componentes/LayoutInicio';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />} >
-	   	    <Route index element={<Home />} />	
-          <Route path="/about" element={<About />} />
-          <Route path="/casosexito" element={<CasosExito />} />
-          <Route path="/" element={<LayoutInicio />} >
-          <Route path="/about" element={<About />} />
-          <Route path="/casosexito" element={<CasosExito />} />
-   	   </Route>
-   	   </Route>
+        {/* Layout principal */}
+        <Route path="/" element={<Layout />} />
+        
+        {/* About con subrutas */}
+        <Route path="/about/*" element={<LayoutAbout />} />
+
+        {/* Casos de Éxito con subrutas */}
+        <Route path="/casosexito/*" element={<LayoutCasosExito />} />
       </Routes>
     </BrowserRouter>
   );
 }
-
 
 export default App;
